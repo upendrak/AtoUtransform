@@ -16,9 +16,9 @@ RUN conda install -c iuc emboss
 RUN Rscript -e 'install.packages("ape", dependencies=TRUE)'
 RUN Rscript -e 'install.packages("getopt", dependencies=TRUE)'
 
-COPY wrapper.r /usr/bin
-RUN chmod +x /usr/bin/wrapper.r
+COPY entry.sh /usr/bin
+RUN chmod +x /usr/bin/entry.sh
 
+COPY plotting.r /usr/bin
 
-ENTRYPOINT ["wrapper.r"]
-CMD ["-h"]
+ENTRYPOINT ["entry.sh"]
